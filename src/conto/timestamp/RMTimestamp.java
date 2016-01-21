@@ -7,7 +7,7 @@ import java.io.Serializable;
  * @author Damiano Di Stefano, Marco Giuseppe Salafia
  */
 
-public class RMTimestamp implements Comparable<RMTimestamp>, Serializable
+public class RMTimestamp implements Comparable<RMTimestamp>, Serializable, Cloneable
 {
     private int counter;
     private String processID;
@@ -40,15 +40,16 @@ public class RMTimestamp implements Comparable<RMTimestamp>, Serializable
         return processID;
     }
 
-    public RMTimestamp getClone()
-    {
-        return new RMTimestamp(this.counter, this.processID);
-    }
-
     @Override
     public String toString()
     {
-        return "RMTimestamp{" + "counter=" + counter + ", processID=" + processID + '}';
+        return "[" + counter + "," + processID + "]";
+    }
+    
+    @Override
+    public Object clone() throws CloneNotSupportedException
+    {
+        return super.clone();
     }
     
     
